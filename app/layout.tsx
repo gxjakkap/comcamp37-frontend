@@ -1,15 +1,12 @@
-import type {Metadata, Viewport} from "next";
-import {Geist, Geist_Mono, Noto_Sans_Thai, Bai_Jamjuree, Roboto} from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Noto_Sans_Thai, Bai_Jamjuree, Roboto } from "next/font/google";
 import localFont from 'next/font/local'
 import "./globals.css";
-import {Navbar} from "@/components/ui/navbar";
-import {Footer} from "@/components/ui/footer";
+import { Navbar } from "@/components/ui/navbar";
+import { Footer } from "@/components/ui/footer";
 import { Toaster } from "@/components/ui/sonner"
 import MicrosoftClarity from "@/app/metrics/MicrosoftClarity";
-import {UserProvider} from "@/contexts/UserContext";
-import {headers} from "next/headers";
-
-export const runtime = 'edge';
+import { UserProvider } from "@/contexts/UserContext";
 
 const zootopiaFont = localFont({
     variable: "--font-zootopia",
@@ -93,17 +90,17 @@ export default function RootLayout({
 
     return (
         <html lang="en">
-        <body
-            className={`${notoSansThai.variable} ${zootopiaFont.variable} ${baiJamjuree.variable} ${roboto.variable} font-bai_jamjuree antialiased bg-theme-primary dark`} /* bg-[#2D364E] #232C40 */
-        >
-        <UserProvider>
-            { process.env.NEXT_PUBLIC_IS_COMINGSOON  == 'false' && (<Navbar/>)}
+            <body
+                className={`${notoSansThai.variable} ${zootopiaFont.variable} ${baiJamjuree.variable} ${roboto.variable} font-bai_jamjuree antialiased bg-theme-primary dark`} /* bg-[#2D364E] #232C40 */
+            >
+                <UserProvider>
+                    {process.env.NEXT_PUBLIC_IS_COMINGSOON == 'false' && (<Navbar />)}
 
-        {children}
-        </UserProvider>
-        <MicrosoftClarity/>
-        <Toaster />
-        </body>
+                    {children}
+                </UserProvider>
+                <MicrosoftClarity />
+                <Toaster />
+            </body>
         </html>
     );
 }
